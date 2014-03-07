@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Veep.Models;
+using System.Data.Entity
 
 namespace Veep.Controllers
 {
@@ -31,12 +32,26 @@ namespace Veep.Controllers
 
             return RedirectToAction("Create");
         }
-
-        private NoteContext db = new NoteContext();
-
-        public ActionResult Edit()
+        
+        public ActionResult Edit(int id)
         {
-            return View();
+            var note = from s in db.Note
+                       where s.ID == id
+                       select s;
+
+            return View(note.First());
         }
+       
+
+        [HttpPost]
+        public ActionResult Edit(Note note)
+        {
+            db.Entry<Note>(note).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("index", new { id = note.ID});
+        } 
+        
+        private NoteContext db = new NoteContext();
     }
 }

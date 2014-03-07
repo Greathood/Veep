@@ -6,8 +6,9 @@
 <div class="container">
     @foreach (var notes in Model)
     {
-        <div class="note">     
-            <h1>@notes.title</h1><a href="~/Note/Edit"><img src="http://www.clker.com/cliparts/Q/e/P/J/C/t/pencil-hi.png" /></a>
+        <div class="note">    
+            <a> <img src="http://www.clker.com/cliparts/Q/e/P/J/C/t/pencil-hi.png" /></a>
+            <h1>@notes.title</h1>
             <p>@notes.content</p>
         </div>
     }
