@@ -14,7 +14,8 @@ namespace Veep.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var notes = db.Note;
+            return View(notes);
         }
 
         public ActionResult Create()
@@ -32,5 +33,10 @@ namespace Veep.Controllers
         }
 
         private NoteContext db = new NoteContext();
+
+        public ActionResult Edit()
+        {
+            return View();
+        }
     }
 }

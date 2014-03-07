@@ -1,5 +1,14 @@
-﻿@{
-    ViewBag.Title = "Index";
-}
+﻿@model IEnumerable<Veep.Models.Note>
 
-<h2>Index</h2>
+<h2>Notes</h2>
+
+
+<div class="container">
+    @foreach (var notes in Model)
+    {
+        <div class="note">     
+            <h1>@notes.title</h1><a href="~/Note/Edit"><img src="http://www.clker.com/cliparts/Q/e/P/J/C/t/pencil-hi.png" /></a>
+            <p>@notes.content</p>
+        </div>
+    }
+</div>
