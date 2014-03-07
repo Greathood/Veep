@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (var post in ViewBag.Posts)
+{
+    <div class="post">
+        <p>
+            Op @post.Created.ToLongDateString()
+            om @post.Created.ToLongTimeString()
+            screef @post.Author:
+        </p>
+        <p>@post.Message</p>
+    </div>
+}
